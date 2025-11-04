@@ -41,7 +41,6 @@ df_clean = df_clean.dropna(subset = [WEATHER_COL], inplace = False).reset_index(
 df_viz = df_clean[["Aircraft_Category", "Engine_Type", "Flight_Phase", FATALITIES_COL]].copy()
 df_viz["True_Fatalities"] = y_true
 df_viz["Predicted_Fatalities"] = y_hat
-print(df_viz.to_string())
 
 print("*** Data Visualization Setup Complete ***")
 
@@ -57,7 +56,6 @@ plt.ylabel("Average Total Fatalites")
 plt.xticks(rotation = 15)
 plt.tight_layout()
 plt.show()
-#print(df_viz.to_string())
 
 # --- 4. PLOT 2: MODEL DIAGNOSTICS (Matplotlib) ---
 # Visualize performance by comparing True vs Predicted Fatalities
@@ -67,7 +65,7 @@ plt.figure(figsize = (7, 7))
 # Scatter plot of True vs Predicted values
 plt.scatter(df_viz["True_Fatalities"], df_viz["Predicted_Fatalities"], 
             alpha = .6, color = "darkblue", edgecolor = "black", label = "Predicted points")
-"""
+
 # 2. Plot the ideal line (y=x) for comparison
 max_val = max(df_viz["True_Fatalities"].max(), df_viz["Predicted_Fatalities"].max()) * 1.05
 plt.plot([0, max_val], [0, max_val] , # define the x = y line
@@ -78,7 +76,7 @@ plt.xlabel("True Total Fatalities", fontsize = 12)
 plt.ylabel("Predicted Total Fatalities", fontsize = 12)
 plt.legend()
 plt.grid(True, linestyle = ":", alpha = 0.7)
-"""
+
 plt.tight_layout()
 plt.show()
 
